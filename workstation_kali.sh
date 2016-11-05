@@ -9,3 +9,6 @@ wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo dpkg -i google-chrome*.deb
 
 apt-get install -y emacs
+
+echo "Don't forget to update sources.list"
+# echo "deb http://http.kali.org/kali kali-rolling main non-free contrib" >> sources.list
