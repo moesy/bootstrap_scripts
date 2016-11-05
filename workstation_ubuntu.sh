@@ -107,4 +107,8 @@ sudo wget https://releases.hashicorp.com/terraform/0.7.5/terraform_0.7.5_linux_a
 sudo unzip terraform_0.7.5_linux_amd64.zip
 sudo rm -rf terraform_0.7.5_linux_amd64.zip
 
+
+echo "Copying dot _files"
+ln dot_files/init.el ~/.emacs.d/init.el
+
 echo "Don't forget to install Nylas N1, Slack, Gitter"
