@@ -5,6 +5,7 @@
 
 (add-to-list 'package-archives
        '("melpa" . "http://melpa.org/packages/") t)
+(add-to-list 'package-archives '("marmalade" . "https://marmalade-repo.org/packages/"))
 
 (package-initialize)
 (when (not package-archive-contents)
@@ -14,17 +15,28 @@
   '(better-defaults
     ein
     elpy
+    find-file-in-project
     flycheck
+    idle-highlight-mode
+    ido-ubiquitous
     material-theme
+    paredit
     py-autopep8
     neotree
     magit
-    markdown-mode))
+    markdown-mode
+    smex
+    scpaste))
 
-(mapc #'(lambda (package)
-    (unless (package-installed-p package)
-      (package-install package)))
-      myPackages)
+(package-initialize)
+(dolist (p myPackages)
+  (when (not (package-installed-p p))
+    (package-install p)))
+
+;;(mapc #'(lambda (package)
+;;    (unless (package-installed-p package)
+;;      (package-install package)))
+;;      myPackages)
 
 ;; BASIC CUSTOMIZATION
 ;; --------------------------------------
@@ -44,17 +56,28 @@
 ;; PYTHON CONFIGURATION
 ;; --------------------------------------
 
-(elpy-enable)
-(elpy-use-ipython)
+;; (elpy-enable)
+;; (elpy-use-ipython)
 
 ;; use flycheck not flymake with elpy
-(when (require 'flycheck nil t)
-  (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
-  (add-hook 'elpy-mode-hook 'flycheck-mode))
+;; (when (require 'flycheck nil t)
+;;  (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+;;  (add-hook 'elpy-mode-hook 'flycheck-mode))
 
 ;; enable autopep8 formatting on save
-(require 'py-autopep8)
-(add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
+;; (require 'py-autopep8)
+;; (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
+(starter-kit-install-if-needed 'elpy 'flycheck 'py-autopep8 'py-yapf)
+(elpy-enable)
+(setq elpy-modules '(elpy-module-company
+                     elpy-module-eldoc
+                     elpy-module-pyvenv
+                     elpy-module-yasnippet
+                     elpy-module-sane-defaults)))
+(setq  elpy-rpc-timeout "10")
+(elpy-use-ipython)
+(require 'py-yapf)
+(add-hook 'elpy-mode-hook 'py-yapf-enable-on-save)
 
 
 

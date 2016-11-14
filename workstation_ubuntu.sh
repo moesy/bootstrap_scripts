@@ -111,4 +111,6 @@ sudo rm -rf terraform_0.7.5_linux_amd64.zip
 echo "Copying dot _files"
 ln dot_files/init.el ~/.emacs.d/init.el
 
+sudo apt-get install python-rope
+
 echo "Don't forget to install Nylas N1, Slack, Gitter"
