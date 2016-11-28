@@ -88,7 +88,7 @@ sudo apt-get install mysql-workbench
 
 
 echo "Installing awscli"
-suo pip install awscli
+sudo pip install awscli
 
 echo "Installing TensorFlow"
 export TF_BINARY_URL=https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow-0.11.0rc0-cp27-none-linux_x86_64.whl
