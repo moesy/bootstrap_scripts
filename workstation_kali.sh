@@ -10,5 +10,4 @@ sudo dpkg -i google-chrome*.deb
 
 apt-get install -y emacs
 
-echo "Don't forget to update sources.list"
-# echo "deb http://http.kali.org/kali kali-rolling main non-free contrib" >> sources.list
+echo "deb http://http.kali.org/kali kali-rolling main non-free contrib" >> sources.list
